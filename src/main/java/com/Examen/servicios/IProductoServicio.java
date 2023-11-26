@@ -7,7 +7,7 @@ import com.Examen.Modelo.Producto;
 public interface IProductoServicio {
 
 	public List<Producto> ListadoProducto();
-	public void RegistrarAuto(Producto producto);
+	public void RegistrarProducto(Producto producto);
 	public Producto BuscarProducto(Integer Id);
 	public void EliminarProducto(Integer Id);
 }

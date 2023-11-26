@@ -16,11 +16,11 @@ public class ProductoServiciosImp implements IProductoServicio{
 	@Override
 	public List<Producto> ListadoProducto() {
 		// TODO Auto-generated method stub
-		return  (List<Producto>) iproducto.findAll();
+		return (List<Producto>) iproducto.findAll();
 	}
 
 	@Override
-	public void RegistrarAuto(Producto producto) {
+	public void RegistrarProducto(Producto producto) {
 		// TODO Auto-generated method stub
 		iproducto.save(producto);
 	}

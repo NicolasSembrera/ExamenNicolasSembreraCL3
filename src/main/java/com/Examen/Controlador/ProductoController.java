@@ -17,12 +17,11 @@ import com.Examen.servicios.IProductoServicio;
 @Controller
 @RequestMapping("/ControlProducto")
 public class ProductoController {
-
 	@Autowired
 	private IProductoServicio iproductoservicio;
 
 	@GetMapping("/ListaProducto")
-	public String ListadoProducto(Model model) {
+	public String ListaProducto(Model model) {
 		List<Producto> lista = iproductoservicio.ListadoProducto();
 		model.addAttribute("listaproductos", lista);
 		return "Vistas/Producto/ListaProducto";
@@ -34,12 +33,34 @@ public class ProductoController {
 		model.addAttribute("productito", producto);
 		return "Vistas/Producto/FrmRegistraProducto";
 	}
-	
+
 	@PostMapping("/InsertarProducto")
 	public String GuardarAuto(@ModelAttribute Producto producto) {
-		iproductoservicio.RegistrarAuto(producto);	
+		iproductoservicio.RegistrarProducto(producto);
 		return "redirect:/ControlProducto/ListaProducto";
-	} 
-	
+	}
+
+	@GetMapping("/Editar/{id}")
+	public String Editar(@PathVariable("id") Integer idProd, Model model) {
+
+		Producto producto = iproductoservicio.BuscarProducto(idProd);
+
+		model.addAttribute("productito", producto);
+
+		return "Vistas/Producto/FrmRegistraProducto";
+
+	} // fin del metodo editar..
+
+	@GetMapping("/Eliminar/{id}")
+	public String Eliminar(@PathVariable("id") Integer idProd, Model model) {
+
+		iproductoservicio.EliminarProducto(idProd);
+		List<Producto> listado = iproductoservicio.ListadoProducto();
+
+		model.addAttribute("listaproductos", listado);
+
+		return "Vistas/Producto/ListaProducto";
+
+	}
 
 }
