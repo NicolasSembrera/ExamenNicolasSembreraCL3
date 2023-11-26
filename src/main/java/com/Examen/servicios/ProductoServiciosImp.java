@@ -2,19 +2,21 @@ package com.Examen.servicios;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Examen.Modelo.Producto;
 import com.Examen.Repositorio.IProducto;
 @Service
-public class AutoServiciosImp implements IProductoServicio{
-
+public class ProductoServiciosImp implements IProductoServicio{
+	
+	@Autowired
 	private IProducto iproducto;
 	
 	@Override
 	public List<Producto> ListadoProducto() {
 		// TODO Auto-generated method stub
-		return (List<Producto>) iproducto.findAll();
+		return  (List<Producto>) iproducto.findAll();
 	}
 
 	@Override
@@ -30,7 +32,7 @@ public class AutoServiciosImp implements IProductoServicio{
 	}
 
 	@Override
-	public void EliminarAuto(Integer Id) {
+	public void EliminarProducto(Integer Id) {
 		iproducto.deleteById(Id);		
 	}
 
