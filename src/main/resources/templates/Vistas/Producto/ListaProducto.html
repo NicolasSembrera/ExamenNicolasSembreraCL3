@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="PaginaMaestra::head">
+	<title>
+		Lista de Productos
+	</title>
+	</head>
+	<body>
+		<nav th:replace="PaginaMaestra::menu"></nav>
+		<h1  align="center">	
+			Listado de autos
+		</h1>
+		<h2 align="center">
+			<a th:href="@{RegisAuto}" class="btn btn-primary">Registrar Nuevo Auto</a>
+		</h2>
+		<table align="center" border="2">
+			<tr><th>Codigo</th>
+			<th>Modelo</th>
+			<th>Color</th>
+			<th>Motor</th>
+			<th>Nro de Placa</th>
+			<th>Precio</th>
+			<th colspan="2">Acciones</th>
+			</tr>
+			<th:block th:each="p:${listadoautos}"></th>
+			<tr>
+				<td th:text="${p.idauto}"></td>
+				<td th:text="${p.modelo}"></td>
+				<td th:text="${p.color}"></td>
+				<td th:text="${p.motor}"></td>
+				<td th:text="${p.nroplaca}"></td>
+				<td th:text="${p.precio}"></td>
+				<td>
+					<a th:href="@{Editar/}+${p.idauto}" th:text="actualizar" class="btn btn-primary"></a>
+				</td>
+				
+				<td><a th:href="@{Eliminar/}+${p.idauto}" th:text="Eliminar" class="btn btn-warning"></a></td>
+			</tr>
+			</th:block>
+		</table>
+	</body>
+</html>
